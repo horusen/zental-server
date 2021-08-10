@@ -1,0 +1,2091 @@
+/* Created by Artisteer v4.3.0.60745 */
+
+#open-main {
+    background: #ffffff url("../../images/page.png") bottom left repeat-x fixed;
+    background: url("../../images/pageglare.png") top center no-repeat,
+        url("../../images/page.png") bottom left repeat-x, #ffffff;
+    background-attachment: fixed, fixed, scroll !important;
+    margin: 0 auto;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    left: 0;
+    top: 0;
+    cursor: default;
+    overflow: hidden;
+}
+table,
+ul.open-hmenu {
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Reset buttons border. It's important for input and button tags.
+ * border-collapse should be separate for shadow in IE.
+ */
+.open-button {
+    border-collapse: separate;
+    -webkit-background-origin: border !important;
+    -moz-background-origin: border !important;
+    background-origin: border-box !important;
+    background: #3483bc;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid #9cafc4;
+    padding: 0 20px;
+    margin: 0 auto;
+    height: 52px;
+}
+
+.open-postcontent,
+.open-postheadericons,
+.open-postfootericons,
+.open-blockcontent,
+ul.open-vmenu a {
+    text-align: left;
+}
+
+.open-postcontent,
+.open-postcontent li,
+.open-postcontent table,
+.open-postcontent a,
+.open-postcontent a:link,
+.open-postcontent a:visited,
+.open-postcontent a.visited,
+.open-postcontent a:hover,
+.open-postcontent a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+}
+
+.open-postcontent p {
+    margin: 13px 0;
+}
+
+.open-postcontent h1,
+.open-postcontent h1 a,
+.open-postcontent h1 a:link,
+.open-postcontent h1 a:visited,
+.open-postcontent h1 a:hover,
+.open-postcontent h2,
+.open-postcontent h2 a,
+.open-postcontent h2 a:link,
+.open-postcontent h2 a:visited,
+.open-postcontent h2 a:hover,
+.open-postcontent h3,
+.open-postcontent h3 a,
+.open-postcontent h3 a:link,
+.open-postcontent h3 a:visited,
+.open-postcontent h3 a:hover,
+.open-postcontent h4,
+.open-postcontent h4 a,
+.open-postcontent h4 a:link,
+.open-postcontent h4 a:visited,
+.open-postcontent h4 a:hover,
+.open-postcontent h5,
+.open-postcontent h5 a,
+.open-postcontent h5 a:link,
+.open-postcontent h5 a:visited,
+.open-postcontent h5 a:hover,
+.open-postcontent h6,
+.open-postcontent h6 a,
+.open-postcontent h6 a:link,
+.open-postcontent h6 a:visited,
+.open-postcontent h6 a:hover,
+.open-blockheader .t,
+.open-blockheader .t a,
+.open-blockheader .t a:link,
+.open-blockheader .t a:visited,
+.open-blockheader .t a:hover,
+.open-vmenublockheader .t,
+.open-vmenublockheader .t a,
+.open-vmenublockheader .t a:link,
+.open-vmenublockheader .t a:visited,
+.open-vmenublockheader .t a:hover,
+.open-headline,
+.open-headline a,
+.open-headline a:link,
+.open-headline a:visited,
+.open-headline a:hover,
+.open-slogan,
+.open-slogan a,
+.open-slogan a:link,
+.open-slogan a:visited,
+.open-slogan a:hover,
+.open-postheader,
+.open-postheader a,
+.open-postheader a:link,
+.open-postheader a:visited,
+.open-postheader a:hover {
+    font-size: 22px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 120%;
+}
+
+.open-postcontent a,
+.open-postcontent a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    color: #fa5705;
+}
+
+.open-postcontent a:visited,
+.open-postcontent a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    color: #839bb4;
+}
+
+.open-postcontent a:hover,
+.open-postcontent a.hover {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: underline;
+    color: #fb7c3c;
+}
+
+.open-postcontent h1 {
+    color: #6c7f93;
+    margin: 10px 0 0;
+    font-size: 26px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h1 {
+    margin: 10px 0 0;
+    font-size: 26px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h1 a,
+.open-postcontent h1 a:link,
+.open-postcontent h1 a:hover,
+.open-postcontent h1 a:visited,
+.open-blockcontent h1 a,
+.open-blockcontent h1 a:link,
+.open-blockcontent h1 a:hover,
+.open-blockcontent h1 a:visited {
+    font-size: 26px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h2 {
+    color: #8d9caa;
+    margin: 10px 0 0;
+    font-size: 22px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h2 {
+    margin: 10px 0 0;
+    font-size: 22px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h2 a,
+.open-postcontent h2 a:link,
+.open-postcontent h2 a:hover,
+.open-postcontent h2 a:visited,
+.open-blockcontent h2 a,
+.open-blockcontent h2 a:link,
+.open-blockcontent h2 a:hover,
+.open-blockcontent h2 a:visited {
+    font-size: 22px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h3 {
+    color: #fb7c3c;
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h3 {
+    margin: 10px 0 0;
+    font-size: 20px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h3 a,
+.open-postcontent h3 a:link,
+.open-postcontent h3 a:hover,
+.open-postcontent h3 a:visited,
+.open-blockcontent h3 a,
+.open-blockcontent h3 a:link,
+.open-blockcontent h3 a:hover,
+.open-blockcontent h3 a:visited {
+    font-size: 20px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h4 {
+    color: #4e6883;
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h4 {
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h4 a,
+.open-postcontent h4 a:link,
+.open-postcontent h4 a:hover,
+.open-postcontent h4 a:visited,
+.open-blockcontent h4 a,
+.open-blockcontent h4 a:link,
+.open-blockcontent h4 a:hover,
+.open-blockcontent h4 a:visited {
+    font-size: 18px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h5 {
+    color: #4e6883;
+    margin: 10px 0 0;
+    font-size: 15px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h5 {
+    margin: 10px 0 0;
+    font-size: 15px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h5 a,
+.open-postcontent h5 a:link,
+.open-postcontent h5 a:hover,
+.open-postcontent h5 a:visited,
+.open-blockcontent h5 a,
+.open-blockcontent h5 a:link,
+.open-blockcontent h5 a:hover,
+.open-blockcontent h5 a:visited {
+    font-size: 15px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h6 {
+    color: #a6b7c9;
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent h6 {
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-postcontent h6 a,
+.open-postcontent h6 a:link,
+.open-postcontent h6 a:hover,
+.open-postcontent h6 a:visited,
+.open-blockcontent h6 a,
+.open-blockcontent h6 a:link,
+.open-blockcontent h6 a:hover,
+.open-blockcontent h6 a:visited {
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+header,
+footer,
+article,
+nav,
+#open-hmenu-bg,
+.open-sheet,
+.open-hmenu a,
+.open-vmenu a,
+.open-slidenavigator > a,
+.open-checkbox:before,
+.open-radiobutton:before {
+    -webkit-background-origin: border !important;
+    -moz-background-origin: border !important;
+    background-origin: border-box !important;
+}
+
+header,
+footer,
+article,
+nav,
+#open-hmenu-bg,
+.open-sheet,
+.open-slidenavigator > a,
+.open-checkbox:before,
+.open-radiobutton:before {
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ol {
+    list-style-position: inside;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/**
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ * https://github.com/necolas/normalize.css
+ */
+
+html {
+    -ms-text-size-adjust: 100%;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    min-width: 800px;
+    color: #303f50;
+}
+
+.open-header:before,
+#open-header-bg:before,
+.open-layout-cell:before,
+.open-layout-wrapper:before,
+.open-footer:before,
+.open-nav:before,
+#open-hmenu-bg:before,
+.open-sheet:before {
+    width: 100%;
+    content: " ";
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.open-header:after,
+#open-header-bg:after,
+.open-layout-cell:after,
+.open-layout-wrapper:after,
+.open-footer:after,
+.open-nav:after,
+#open-hmenu-bg:after,
+.open-sheet:after,
+.cleared,
+.clearfix:after {
+    clear: both;
+    font: 0/0 serif;
+    display: block;
+    content: " ";
+}
+
+form {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+table.position {
+    position: relative;
+    width: 100%;
+    table-layout: fixed;
+}
+
+li h1,
+.open-postcontent li h1,
+.open-blockcontent li h1 {
+    margin: 1px;
+}
+li h2,
+.open-postcontent li h2,
+.open-blockcontent li h2 {
+    margin: 1px;
+}
+li h3,
+.open-postcontent li h3,
+.open-blockcontent li h3 {
+    margin: 1px;
+}
+li h4,
+.open-postcontent li h4,
+.open-blockcontent li h4 {
+    margin: 1px;
+}
+li h5,
+.open-postcontent li h5,
+.open-blockcontent li h5 {
+    margin: 1px;
+}
+li h6,
+.open-postcontent li h6,
+.open-blockcontent li h6 {
+    margin: 1px;
+}
+li p,
+.open-postcontent li p,
+.open-blockcontent li p {
+    margin: 1px;
+}
+
+.open-shapes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.open-slider-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.open-slidenavigator > a {
+    display: inline-block;
+    vertical-align: middle;
+    outline-style: none;
+    font-size: 1px;
+}
+
+.open-slidenavigator > a:last-child {
+    margin-right: 0 !important;
+}
+
+.open-headline {
+    display: inline-block;
+    position: absolute;
+    min-width: 50px;
+    top: 24px;
+    left: 56.34%;
+    margin-left: -259px !important;
+    line-height: 100%;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    z-index: 101;
+}
+
+.open-headline,
+.open-headline a,
+.open-headline a:link,
+.open-headline a:visited,
+.open-headline a:hover {
+    font-size: 36px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    margin: 0;
+    color: #ffffff !important;
+    white-space: nowrap;
+}
+
+.open-sheet {
+    margin: 0 auto;
+    position: relative;
+    cursor: auto;
+    width: 800px;
+    z-index: auto !important;
+}
+
+.open-header {
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    height: 110px;
+    background-image: url("../../images/header.jpg");
+    background-position: 0 0;
+    position: relative;
+    z-index: auto !important;
+}
+
+.custom-responsive .open-header {
+    background-image: url("../../images/header.jpg");
+    background-position: 0 0;
+}
+
+.default-responsive .open-header,
+.default-responsive #open-header-bg {
+    background-image: url("../../images/header.jpg");
+    background-position: center center;
+    background-size: cover;
+}
+
+.open-header > .widget {
+    position: absolute;
+    z-index: 101;
+}
+
+.open-layout-wrapper {
+    position: relative;
+    margin: 20px auto 0 auto;
+    z-index: auto !important;
+}
+
+.open-content-layout {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.open-content-layout-row {
+    display: table-row;
+}
+
+.open-layout-cell {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: top;
+}
+
+/* need only for content layout in post content */
+.open-postcontent .open-content-layout {
+    border-collapse: collapse;
+}
+
+.open-block {
+    margin: 3px;
+}
+div.open-block img {
+    border: none;
+    margin: 0;
+}
+
+.open-blockheader {
+    padding: 6px 5px;
+    margin: 0 auto 2px;
+}
+.open-blockheader .t,
+.open-blockheader .t a,
+.open-blockheader .t a:link,
+.open-blockheader .t a:visited,
+.open-blockheader .t a:hover {
+    color: #758799;
+    font-size: 20px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 0 5px;
+}
+
+.open-blockcontent {
+    padding: 5px;
+    margin: 0 auto;
+    color: #303f50;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+}
+.open-blockcontent table,
+.open-blockcontent li,
+.open-blockcontent a,
+.open-blockcontent a:link,
+.open-blockcontent a:visited,
+.open-blockcontent a:hover {
+    color: #303f50;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+}
+
+.open-blockcontent p {
+    margin: 0 5px;
+}
+
+.open-blockcontent a,
+.open-blockcontent a:link {
+    color: #fb7c3c;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-blockcontent a:visited,
+.open-blockcontent a.visited {
+    color: #a9bacb;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+}
+
+.open-blockcontent a:hover,
+.open-blockcontent a.hover {
+    color: #fa5705;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+}
+.open-block ul > li:before {
+    content: url("../../images/blockbullets.png");
+    margin-right: 6px;
+    bottom: 2px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+    margin-left: -12px;
+}
+.opera .open-block ul > li:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-block li {
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+    color: #4e6883;
+    margin: 5px 0 0 10px;
+}
+
+.open-block ul > li,
+.open-block ol {
+    padding: 0;
+}
+
+.open-block ul > li {
+    padding-left: 12px;
+}
+
+.open-breadcrumbs {
+    margin: 0 auto;
+}
+
+a.open-button,
+a.open-button:link,
+a:link.open-button:link,
+body a.open-button:link,
+a.open-button:visited,
+body a.open-button:visited,
+input.open-button,
+button.open-button {
+    text-decoration: none;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    color: #ffffff;
+    margin: 0 5px 0 0 !important;
+    overflow: visible;
+    cursor: pointer;
+    text-indent: 0;
+    line-height: 52px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.open-button img {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.firefox2 .open-button {
+    display: block;
+    float: left;
+}
+
+input,
+select,
+textarea,
+a.open-search-button span {
+    vertical-align: middle;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.open-block select {
+    width: 96%;
+}
+
+input.open-button {
+    float: none !important;
+    -webkit-appearance: none;
+}
+
+.open-button.active,
+.open-button.active:hover {
+    background: #a1adba;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid #8a99a8;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+.open-button.active,
+.open-button.active:hover {
+    color: #ffffff !important;
+}
+
+.open-button.hover,
+.open-button:hover {
+    background: #145a80;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid #a1adba;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+.open-button.hover,
+.open-button:hover {
+    color: #ffffff !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="range"],
+input[type="tel"],
+input[type="time"],
+input[type="week"],
+textarea {
+    background: #f9fafb;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #b9c2cb;
+    margin: 0 auto;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="number"],
+input[type="range"],
+input[type="tel"],
+input[type="time"],
+input[type="week"],
+textarea {
+    width: 100%;
+    padding: 4px 0;
+    color: #3d5166 !important;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    text-shadow: none;
+}
+input.open-error,
+textarea.open-error {
+    background: #f9fafb;
+    border: 1px solid #e2341d;
+    margin: 0 auto;
+}
+input.open-error,
+textarea.open-error {
+    color: #3d5166 !important;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+form.open-search input[type="text"] {
+    background: #ffffff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccd6e0;
+    margin: 0 auto;
+    width: 100%;
+    padding: 4px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #364049 !important;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+form.open-search {
+    background-image: none;
+    border: 0;
+    display: block;
+    position: relative;
+    top: 0;
+    padding: 0;
+    margin: 5px;
+    left: 0;
+    line-height: 0;
+}
+
+form.open-search input,
+a.open-search-button {
+    -webkit-appearance: none;
+    top: 0;
+    right: 0;
+}
+
+form.open-search > input,
+a.open-search-button {
+    bottom: 0;
+    left: 0;
+    vertical-align: middle;
+}
+
+form.open-search input[type="submit"],
+input.open-search-button,
+a.open-search-button {
+    border-radius: 0;
+    margin: 0 auto;
+}
+form.open-search input[type="submit"],
+input.open-search-button,
+a.open-search-button {
+    position: absolute;
+    left: auto;
+    display: block;
+    border: none;
+    background: url("../../images/searchicon.png") center center no-repeat;
+    width: 24px;
+    height: 100%;
+    padding: 0;
+    color: #ffffff !important;
+    cursor: pointer;
+}
+
+a.open-search-button span.open-search-button-text {
+    display: none;
+}
+
+label.open-checkbox:before {
+    background: #f9fafb;
+    background: -webkit-linear-gradient(top, #ffffff 0, #b2c1d1 100%) no-repeat;
+    background: -moz-linear-gradient(top, #ffffff 0, #b2c1d1 100%) no-repeat;
+    background: -o-linear-gradient(top, #ffffff 0, #b2c1d1 100%) no-repeat;
+    background: -ms-linear-gradient(top, #ffffff 0, #b2c1d1 100%) no-repeat;
+    -svg-background: linear-gradient(top, #ffffff 0, #b2c1d1 100%) no-repeat;
+    background: linear-gradient(to bottom, #ffffff 0, #b2c1d1 100%) no-repeat;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    border: 1px solid #9cafc4;
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: top;
+    content: " ";
+}
+label.open-checkbox {
+    cursor: pointer;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 16px;
+    display: inline-block;
+    color: #364049 !important;
+    position: relative;
+}
+
+.open-checkbox > input[type="checkbox"] {
+    margin: 0 5px 0 0;
+}
+
+label.open-checkbox.active:before {
+    background: #fc905a;
+    background: -webkit-linear-gradient(top, #fdb28c 0, #fb6b23 100%) no-repeat;
+    background: -moz-linear-gradient(top, #fdb28c 0, #fb6b23 100%) no-repeat;
+    background: -o-linear-gradient(top, #fdb28c 0, #fb6b23 100%) no-repeat;
+    background: -ms-linear-gradient(top, #fdb28c 0, #fb6b23 100%) no-repeat;
+    -svg-background: linear-gradient(top, #fdb28c 0, #fb6b23 100%) no-repeat;
+    background: linear-gradient(to bottom, #fdb28c 0, #fb6b23 100%) no-repeat;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    border: 1px solid #d74b04;
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+label.open-checkbox.hovered:before {
+    background: #d9dee3;
+    background: -webkit-linear-gradient(top, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    background: -moz-linear-gradient(top, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    background: -o-linear-gradient(top, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    background: -ms-linear-gradient(top, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    -svg-background: linear-gradient(top, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    background: linear-gradient(to bottom, #f9fafb 0, #b6bfc9 100%) no-repeat;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    border: 1px solid #7993af;
+    margin: 0 auto;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+label.open-radiobutton:before {
+    background: #f9fafb;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+}
+label.open-radiobutton {
+    cursor: pointer;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 12px;
+    display: inline-block;
+    color: #364049 !important;
+}
+
+.open-radiobutton > input[type="radio"] {
+    vertical-align: baseline;
+    margin: 0 5px 0 0;
+}
+
+label.open-radiobutton.active:before {
+    background: #b9c2cb;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+label.open-radiobutton.hovered:before {
+    background: #d9dee3;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border-width: 0;
+    margin: 0 auto;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+}
+
+label.open-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+label.open-checkbox.open-checked:after {
+    content: url("../../images/checkboxicon.png");
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.open-comments {
+    border-top: 1px dotted #a1adba;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.open-comments h2 {
+    color: #23292f;
+}
+
+.open-comment-inner {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-left: 96px;
+}
+.open-comment-avatar {
+    float: left;
+    width: 80px;
+    height: 80px;
+    padding: 2px;
+    background: #fff;
+    border: 1px solid #e2e8ee;
+}
+
+.open-comment-avatar > img {
+    margin: 0 !important;
+    border: none !important;
+}
+
+.open-comment-content {
+    padding: 10px 0;
+    color: #303f50;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-comment {
+    margin-top: 6px;
+}
+
+.open-comment:first-child {
+    margin-top: 0;
+}
+
+.open-comment-header {
+    color: #23292f;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 100%;
+}
+
+.open-comment-header a,
+.open-comment-header a:link,
+.open-comment-header a:visited,
+.open-comment-header a.visited,
+.open-comment-header a:hover,
+.open-comment-header a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 100%;
+}
+
+.open-comment-header a,
+.open-comment-header a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: bold;
+    font-style: normal;
+    color: #758799;
+}
+
+.open-comment-header a:visited,
+.open-comment-header a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #758799;
+}
+
+.open-comment-header a:hover,
+.open-comment-header a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #758799;
+}
+
+.open-comment-content a,
+.open-comment-content a:link,
+.open-comment-content a:visited,
+.open-comment-content a.visited,
+.open-comment-content a:hover,
+.open-comment-content a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-comment-content a,
+.open-comment-content a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #cd4704;
+}
+
+.open-comment-content a:visited,
+.open-comment-content a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #3f5369;
+}
+
+.open-comment-content a:hover,
+.open-comment-content a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #cd4704;
+}
+
+.open-pager {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 2px;
+}
+
+.open-pager > *:last-child {
+    margin-right: 0 !important;
+}
+
+.open-pager > span {
+    cursor: default;
+}
+
+.open-pager > * {
+    background: #d9dee3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0 4px 0 auto;
+    line-height: normal;
+    position: relative;
+    display: inline-block;
+    margin-left: 0;
+}
+
+.open-pager a:link,
+.open-pager a:visited,
+.open-pager .active {
+    line-height: normal;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    color: #1c2126;
+}
+
+.open-pager .active {
+    background: #b6bfc9;
+    padding: 10px;
+    margin: 0 4px 0 auto;
+    color: #ffffff;
+}
+
+.open-pager .more {
+    background: #d9dee3;
+    margin: 0 4px 0 auto;
+}
+.open-pager a.more:link,
+.open-pager a.more:visited {
+    color: #411701;
+}
+.open-pager a:hover {
+    background: #b9c2cb;
+    padding: 10px;
+    margin: 0 4px 0 auto;
+}
+.open-pager a:hover,
+.open-pager a.more:hover {
+    text-decoration: none;
+    color: #21262c;
+}
+.open-pager > *:after {
+    margin: 0 0 0 auto;
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    top: 0;
+    width: 0;
+    height: 100%;
+    right: 0;
+    text-decoration: none;
+}
+
+.open-pager > *:last-child:after {
+    display: none;
+}
+
+.open-commentsform {
+    background: #e2e8ee;
+    background: transparent;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 25px;
+    color: #23292f;
+}
+
+.open-commentsform h2 {
+    padding-bottom: 10px;
+    margin: 0;
+    color: #23292f;
+}
+
+.open-commentsform label {
+    display: inline-block;
+    line-height: 25px;
+}
+
+.open-commentsform input:not([type="submit"]),
+.open-commentsform textarea {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.open-commentsform .form-submit {
+    margin-top: 10px;
+}
+.open-post {
+    padding: 5px;
+}
+a img {
+    border: 0;
+}
+
+.open-article img,
+img.open-article,
+.open-block img,
+.open-footer img {
+    margin: 7px 7px 7px 7px;
+}
+
+.open-metadata-icons img {
+    border: none;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+.open-article table,
+table.open-article {
+    border-collapse: collapse;
+    margin: 1px;
+}
+
+.open-post .open-content-layout-br {
+    height: 0;
+}
+
+.open-article th,
+.open-article td {
+    padding: 2px;
+    border: solid 1px #b9c2cb;
+    vertical-align: top;
+    text-align: left;
+}
+
+.open-article th {
+    text-align: center;
+    vertical-align: middle;
+    padding: 7px;
+}
+
+pre {
+    overflow: auto;
+    padding: 0.1em;
+}
+
+.preview-cms-logo {
+    border: 0;
+    margin: 1em 1em 0 0;
+    float: left;
+}
+
+.image-caption-wrapper {
+    padding: 7px 7px 7px 7px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image-caption-wrapper img {
+    margin: 0 !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image-caption-wrapper div.open-collage {
+    margin: 0 !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.image-caption-wrapper p {
+    font-size: 80%;
+    text-align: right;
+    margin: 0;
+}
+
+.open-postheader {
+    color: #4e6883;
+    margin: 5px 10px;
+    font-size: 24px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.open-postheader a,
+.open-postheader a:link,
+.open-postheader a:visited,
+.open-postheader a.visited,
+.open-postheader a:hover,
+.open-postheader a.hovered {
+    font-size: 24px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.open-postheader a,
+.open-postheader a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    text-align: left;
+    color: #fb7f41;
+}
+
+.open-postheader a:visited,
+.open-postheader a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    text-align: left;
+    color: #708ba9;
+}
+
+.open-postheader a:hover,
+.open-postheader a.hovered {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    text-align: left;
+    color: #fb7c3c;
+}
+
+.open-postheadericons,
+.open-postheadericons a,
+.open-postheadericons a:link,
+.open-postheadericons a:visited,
+.open-postheadericons a:hover {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #4e6883;
+}
+
+.open-postheadericons {
+    padding: 1px;
+    margin: 0 0 0 10px;
+}
+
+.open-postheadericons a,
+.open-postheadericons a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+    color: #fb722d;
+}
+
+.open-postheadericons a:visited,
+.open-postheadericons a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    color: #587493;
+}
+
+.open-postheadericons a:hover,
+.open-postheadericons a.hover {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: underline;
+    color: #e65005;
+}
+
+.open-postdateicon:before {
+    content: url("../../images/postdateicon.png");
+    margin-right: 6px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+    bottom: auto;
+}
+.opera .open-postdateicon:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-postauthoricon:before {
+    content: url("../../images/postauthoricon.png");
+    margin-right: 6px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+    bottom: auto;
+}
+.opera .open-postauthoricon:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-postediticon:before {
+    content: url("../../images/postediticon.png");
+    margin-right: 6px;
+    bottom: 2px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+}
+.opera .open-postediticon:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-postcontent ul > li:before,
+.open-post ul > li:before,
+.open-textblock ul > li:before {
+    content: url("../../images/postbullets.png");
+    margin-right: 10px;
+    bottom: 2px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+}
+.opera .open-postcontent ul > li:before,
+.opera .open-post ul > li:before,
+.opera .open-textblock ul > li:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-postcontent li,
+.open-post li,
+.open-textblock li {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #303f50;
+    margin: 3px 0 0 11px;
+}
+
+.open-postcontent ul > li,
+.open-post ul > li,
+.open-textblock ul > li,
+.open-postcontent ol,
+.open-post ol,
+.open-textblock ol {
+    padding: 0;
+}
+
+.open-postcontent ul > li,
+.open-post ul > li,
+.open-textblock ul > li {
+    padding-left: 17px;
+}
+
+.open-postcontent ul > li:before,
+.open-post ul > li:before,
+.open-textblock ul > li:before {
+    margin-left: -17px;
+}
+
+.open-postcontent ol,
+.open-post ol,
+.open-textblock ol,
+.open-postcontent ul,
+.open-post ul,
+.open-textblock ul {
+    margin: 1em 0 1em 11px;
+}
+
+.open-postcontent li ol,
+.open-post li ol,
+.open-textblock li ol,
+.open-postcontent li ul,
+.open-post li ul,
+.open-textblock li ul {
+    margin: 0.5em 0 0.5em 11px;
+}
+
+.open-postcontent li,
+.open-post li,
+.open-textblock li {
+    margin: 3px 0 0 0;
+}
+
+.open-postcontent ol > li,
+.open-post ol > li,
+.open-textblock ol > li {
+    /* overrides overflow for "ul li" and sets the default value */
+    overflow: visible;
+}
+
+.open-postcontent ul > li,
+.open-post ul > li,
+.open-textblock ul > li {
+    /* makes "ul li" not to align behind the image if they are in the same line */
+    overflow-x: visible;
+    overflow-y: hidden;
+}
+
+blockquote {
+    background: #eff2f5 url("../../images/postquote.png") no-repeat scroll;
+    padding: 15px 15px 15px 52px;
+    margin: 10px 0 0 25px;
+    color: #0d1216;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: italic;
+    text-align: left;
+    /* makes block not to align behind the image if they are in the same line */
+    overflow: auto;
+    clear: both;
+}
+blockquote a,
+.open-postcontent blockquote a,
+.open-blockcontent blockquote a,
+.open-footer blockquote a,
+blockquote a:link,
+.open-postcontent blockquote a:link,
+.open-blockcontent blockquote a:link,
+.open-footer blockquote a:link,
+blockquote a:visited,
+.open-postcontent blockquote a:visited,
+.open-blockcontent blockquote a:visited,
+.open-footer blockquote a:visited,
+blockquote a:hover,
+.open-postcontent blockquote a:hover,
+.open-blockcontent blockquote a:hover,
+.open-footer blockquote a:hover {
+    color: #0d1216;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    font-weight: normal;
+    font-style: italic;
+    text-align: left;
+}
+
+/* Override native 'p' margins*/
+blockquote p,
+.open-postcontent blockquote p,
+.open-blockcontent blockquote p,
+.open-footer blockquote p {
+    margin: 0;
+    margin: 5px 0;
+}
+
+.Sorter img {
+    border: 0;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    position: static;
+    z-index: 1;
+    width: 12px;
+    height: 6px;
+}
+
+.Sorter a {
+    position: relative;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #647587;
+}
+
+.Sorter a:link {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #647587;
+}
+
+.Sorter a:visited,
+.Sorter a.visited {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #647587;
+}
+
+.Sorter a:hover,
+.Sorter a.hover {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #4c5967;
+}
+
+.Sorter {
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #364049;
+}
+
+.open-footer {
+    border-top: 1px dotted #9cafc4;
+    padding: 25px;
+    margin: 20px auto 0;
+    position: relative;
+    color: #6986a5;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+    text-align: center;
+}
+
+.open-footer a,
+.open-footer a:link,
+.open-footer a:visited,
+.open-footer a:hover,
+.open-footer td,
+.open-footer th,
+.open-footer caption {
+    color: #6986a5;
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    line-height: 175%;
+}
+
+.open-footer p {
+    padding: 0;
+    text-align: center;
+}
+
+.open-footer a,
+.open-footer a:link {
+    color: #839bb4;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+}
+
+.open-footer a:visited {
+    color: #607e9f;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: none;
+}
+
+.open-footer a:hover {
+    color: #fb7c3c;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    text-decoration: underline;
+}
+
+.open-footer h1 {
+    color: #8a99a8;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer h2 {
+    color: #a1adba;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer h3 {
+    color: #fa681e;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer h4 {
+    color: #9cafc4;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer h5 {
+    color: #9cafc4;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer h6 {
+    color: #9cafc4;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+}
+
+.open-footer img {
+    border: none;
+    margin: 0;
+}
+
+.open-rss-tag-icon {
+    background: url("../../images/footerrssicon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-rss-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-facebook-tag-icon {
+    background: url("../../images/footerfacebookicon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-facebook-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-twitter-tag-icon {
+    background: url("../../images/footertwittericon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-twitter-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-tumblr-tag-icon {
+    background: url("../../images/tumblricon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-tumblr-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-pinterest-tag-icon {
+    background: url("../../images/pinteresticon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-pinterest-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-vimeo-tag-icon {
+    background: url("../../images/vimeoicon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-vimeo-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-youtube-tag-icon {
+    background: url("../../images/youtubeicon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-youtube-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-linkedin-tag-icon {
+    background: url("../../images/linkedinicon.png") no-repeat scroll;
+    margin: 0 auto;
+    min-height: 32px;
+    min-width: 32px;
+    display: inline-block;
+    text-indent: 35px;
+    background-position: left center;
+    vertical-align: middle;
+}
+
+.open-linkedin-tag-icon:empty {
+    vertical-align: middle;
+}
+
+.open-footer ul > li:before {
+    content: url("../../images/footerbullets.png");
+    margin-right: 6px;
+    bottom: 2px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    line-height: 0;
+    margin-left: -13px;
+}
+.opera .open-footer ul > li:before {
+    /* Vertical-align:middle in Opera doesn't need additional offset */
+    bottom: 0;
+}
+
+.open-footer li {
+    font-size: 13px;
+    font-family: Arial, "Arial Unicode MS", Helvetica, Sans-Serif;
+    color: #a53903;
+}
+
+.open-footer ul > li,
+.open-footer ol {
+    padding: 0;
+}
+
+.open-footer ul > li {
+    padding-left: 13px;
+}
+
+.open-page-footer,
+.open-page-footer a,
+.open-page-footer a:link,
+.open-page-footer a:visited,
+.open-page-footer a:hover {
+    font-family: Arial;
+    font-size: 10px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+    color: #647587;
+}
+
+.open-page-footer {
+    position: relative;
+    z-index: auto !important;
+    padding: 1em;
+    text-align: center !important;
+    text-decoration: none;
+    color: #435970;
+}
+
+.open-lightbox-wrapper {
+    background: #333;
+    background: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    left: 0;
+    padding: 0 100px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    z-index: 1000000;
+}
+
+.open-lightbox,
+.open-lightbox-wrapper .open-lightbox-image {
+    cursor: pointer;
+}
+
+.open-lightbox-wrapper .open-lightbox-image {
+    border: 6px solid #fff;
+    border-radius: 3px;
+    display: none;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.open-lightbox-wrapper .open-lightbox-image.active {
+    display: inline-block;
+}
+
+.open-lightbox-wrapper .lightbox-error {
+    background: #fff;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #333;
+    height: 80px;
+    opacity: 0.95;
+    padding: 20px;
+    position: fixed;
+    width: 300px;
+    z-index: 100;
+}
+
+.open-lightbox-wrapper .loading {
+    background: #fff url("../images/preloader-01.gif") center center no-repeat;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #333;
+    height: 32px;
+    opacity: 0.5;
+    padding: 10px;
+    position: fixed;
+    width: 32px;
+    z-index: 10100;
+}
+
+.open-lightbox-wrapper .arrow {
+    cursor: pointer;
+    height: 100px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    position: fixed;
+    width: 82px;
+    z-index: 10003;
+}
+
+.open-lightbox-wrapper .arrow.left {
+    left: 9px;
+}
+
+.open-lightbox-wrapper .arrow.right {
+    right: 9px;
+}
+
+.open-lightbox-wrapper .arrow:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.open-lightbox-wrapper .arrow.disabled {
+    display: none;
+}
+
+.open-lightbox-wrapper .arrow-t,
+.open-lightbox-wrapper .arrow-b {
+    background-color: #fff;
+    border-radius: 3px;
+    height: 6px;
+    left: 26px;
+    position: relative;
+    width: 30px;
+}
+
+.open-lightbox-wrapper .arrow-t {
+    top: 38px;
+}
+
+.open-lightbox-wrapper .arrow-b {
+    top: 50px;
+}
+
+.open-lightbox-wrapper .close {
+    cursor: pointer;
+    height: 22px;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    position: fixed;
+    right: 39px;
+    top: 30px;
+    width: 22px;
+    z-index: 10003;
+}
+
+.open-lightbox-wrapper .close:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.open-lightbox-wrapper .close .cw,
+.open-lightbox-wrapper .close .ccw {
+    background-color: #fff;
+    border-radius: 3px;
+    height: 6px;
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 30px;
+}
+
+.open-lightbox-wrapper .cw {
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Safari and Chrome */
+    -o-transform: rotate(45deg);
+    /* Opera */
+    -moz-transform: rotate(45deg);
+    /* Firefox */
+}
+
+.open-lightbox-wrapper .ccw {
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-45deg);
+    /* Safari and Chrome */
+    -o-transform: rotate(-45deg);
+    /* Opera */
+    -moz-transform: rotate(-45deg);
+    /* Firefox */
+}
+
+.open-lightbox-wrapper .close-alt,
+.open-lightbox-wrapper .arrow-right-alt,
+.open-lightbox-wrapper .arrow-left-alt {
+    color: #fff;
+    display: none;
+    font-size: 2.5em;
+    line-height: 100%;
+}
+
+.ie8 .open-lightbox-wrapper .close-alt,
+.ie8 .open-lightbox-wrapper .arrow-right-alt,
+.ie8 .open-lightbox-wrapper .arrow-left-alt {
+    display: block;
+}
+
+.ie8 .open-lightbox-wrapper .cw,
+.ie8 .open-lightbox-wrapper .ccw {
+    display: none;
+}
+
+.open-content-layout .open-content {
+    margin: 0 auto;
+}
+
+/* Begin Additional CSS Styles */
+
+/* End Additional CSS Styles */

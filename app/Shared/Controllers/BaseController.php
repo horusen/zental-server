@@ -150,8 +150,9 @@ class BaseController extends Controller
 
     public function destroy($id)
     {
-        $this->model::find($id)->delete();
-        return null;
+        $item = $this->model::find($id);
+        $item->delete();
+        return $item;
     }
 
 

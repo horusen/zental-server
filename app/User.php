@@ -2,9 +2,15 @@
 
 namespace App;
 
+use App\Http\Controllers\RelationInterpersonnelleController;
+use App\Models\ContactUser;
 use App\Models\Employe;
 use App\Models\MembreCabinetMinistre;
+use App\Models\RelationFamiliale;
+use App\Models\RelationInterpersonnelle;
 use App\Models\Service;
+use App\Models\SituationMatrimoniale;
+use App\Models\Ville;
 use App\Shared\Models\Fichier\Fichier;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +21,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
+    use \Awobaz\Compoships\Compoships;
 
     protected $table = 'cpt_inscription';
 
@@ -22,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public $timestamps = true;
     // protected $with = ['photo', 'photo_min'];
-    protected $with = ['photo'];
+    protected $with = ['photo', 'lieu_naissance.pays', 'situation_matrimoniale'];
 
     protected $guarded = ['id_inscription'];
     protected $appends = ['nom_complet'];
@@ -74,5 +81,35 @@ class User extends Authenticatable implements MustVerifyEmail
     public function employes()
     {
         return $this->hasMany(Employe::class, 'employe')->whereNotIn('poste', [1, 2, 3]);
+    }
+
+
+    public function situation_matrimoniale()
+    {
+        return $this->belongsTo(SituationMatrimoniale::class, 'situation_matrimoniale');
+    }
+
+
+    public function lieu_naissance()
+    {
+        return $this->belongsTo(Ville::class, 'lieu_naissance');
+    }
+
+
+    public function relations_familiales()
+    {
+        return $this->hasMany(RelationFamiliale::class,  'membre_famille', 'id_inscription');
+    }
+
+
+    public function relations_interpersonnelles()
+    {
+        return $this->hasMany(RelationInterpersonnelle::class, ['user1', 'user2'], ['id_inscription', 'id_inscription']);
+    }
+
+
+    public function contacts()
+    {
+        return $this->hasMany(ContactUser::class, 'contact');
     }
 }

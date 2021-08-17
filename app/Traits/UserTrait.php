@@ -25,10 +25,47 @@ trait UserTrait
         return $users;
     }
 
+
+    protected function filterByNonRelation($users, $user)
+    {
+        return $users->whereDoesntHave('relations_interpersonnelles', function ($q) use ($user) {
+            $q->where('zen_relation_interpersonnelle.id', $user);
+        });
+    }
+
+
+    protected function filterByNonContact($users, $user)
+    {
+        return $users->whereDoesntHave('contacts', function ($q) use ($user) {
+            $q->where('zen_contact_user.user', $user);
+        });
+    }
+
+
     protected function filterByNonMembreCabinetMinistre($users, $ministres)
-    {;
+    {
         return $users->whereDoesntHave('membresCabinetMinistre', function ($q) use ($ministres) {
             $q->whereNotIn('zen_membre_cabinet_ministre.ministre', $ministres);
+        });
+    }
+
+
+    protected function filterMembreFamilleByTypeRelationFamiliale($users, $user, $type_relation_familiale)
+    {
+        // return $users->has('relations_familiales');
+        return $users->whereHas('relations_familiales', function ($q) use ($user, $type_relation_familiale) {
+            $q->whereHas('type', function ($q) use ($type_relation_familiale) {
+                $q->where('libelle', $type_relation_familiale);
+            })->where('user', $user);
+        });
+    }
+
+
+
+    protected function filterByNonMembresFamilles($users, $user)
+    {;
+        return $users->whereDoesntHave('relations_familiales', function ($q) use ($user) {
+            $q->where('zen_relation_familiale.user',  $user);
         });
     }
 

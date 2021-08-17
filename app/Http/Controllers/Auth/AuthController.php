@@ -91,13 +91,14 @@ class AuthController extends Controller
 
     public function addUser(Request $request)
     {
+        // return $request->all();
         $this->validate($request, [
             'prenom' => 'required',
             'nom' => 'required',
             'email' => 'required|string|email|unique:cpt_inscription,email|max:255',
         ]);
 
-        $user = User::create(['email' => $request->email, 'prenom' => $request->prenom, 'nom' => $request->nom]);
+        $user = User::create(['email' => $request->email, 'prenom' => $request->prenom, 'nom' => $request->nom, 'telephone' => $request->telephone]);
 
         Mail::to($user->email)->send(new ConfirmationInscriptionMail(Auth::user(), $user));
 

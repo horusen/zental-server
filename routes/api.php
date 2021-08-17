@@ -4,9 +4,14 @@ use App\Http\Controllers\AdresseController;
 use App\Http\Controllers\AmbassadeController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BureauController;
+use App\Http\Controllers\ConjointController;
 use App\Http\Controllers\ConsulatController;
+use App\Http\Controllers\ContactUserController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\DiplomeController;
 use App\Http\Controllers\DomaineController;
+use App\Http\Controllers\DomaineInstitutionController;
+use App\Http\Controllers\EmploieController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\FonctionController;
 use App\Http\Controllers\IciMonPaysController;
@@ -14,19 +19,25 @@ use App\Http\Controllers\LiaisonController;
 use App\Http\Controllers\MembreCabinetMinistreController;
 use App\Http\Controllers\MinistereController;
 use App\Http\Controllers\MinistreController;
+use App\Http\Controllers\NiveauController;
 use App\Http\Controllers\PasseFrontiereController;
 use App\Http\Controllers\PasserelleController;
 use App\Http\Controllers\PaysController;
+use App\Http\Controllers\PieceConsulaireController;
 use App\Http\Controllers\PosteController;
+use App\Http\Controllers\RelationFamilialeController;
+use App\Http\Controllers\RelationInterpersonnelleController;
 use App\Http\Controllers\ResponsableController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SituationMatrimonialController;
+use App\Http\Controllers\TypeContactController;
+use App\Http\Controllers\TypeContratController;
 use App\Http\Controllers\TypePasserelleController;
+use App\Http\Controllers\TypePieceConsulaireController;
+use App\Http\Controllers\TypeRelationController;
+use App\Http\Controllers\TypeRelationFamilialeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VilleController;
-use App\Mail\ConfirmationInscriptionMail;
-use App\Mail\TestMail;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,30 +66,75 @@ Route::get('email/resend', 'VerificationController@resend')->name('verification.
 
 
 Route::middleware('auth:api')->group(function () {
-    Route::post('user', [AuthController::class, 'addUser']);
-    Route::put('user/{user}', [AuthController::class, 'update']);
-    Route::get('user/{user}/verify', [AuthController::class, 'verifyConfirmationToken']);
+    Route::post('users', [AuthController::class, 'addUser']);
+    Route::get('users/all', [UserController::class, 'getAll']);
+    Route::put('users/{user}', [AuthController::class, 'update']);
+    Route::get('users/{user}', [UserController::class, 'show']);
+    Route::get('users/{user}/verify', [AuthController::class, 'verifyConfirmationToken']);
 
 
     // Relation familiale
+    Route::get('users/{user}/relations-familiales/{type_relation_familiale}', [RelationFamilialeController::class, 'getByUserAndByType']);
+    Route::get('users/{user}/relations-familiales/{type_relation_familiale}/list', [RelationFamilialeController::class, 'getByUserAndByTypeList']);
+
     Route::apiResource('relations-familiales', 'RelationFamilialeController');
 
+
+    // Situation matrimonial
+    Route::get('situations-matrimoniales/all', [SituationMatrimonialController::class, 'getAll']);
+    Route::apiResource('situations-matrimoniales', 'SituationMatrimonialController');
+
+    // Type relation familiale
+    Route::get('relations-familiales/types/all', [TypeRelationFamilialeController::class, 'getAll']);
+
+
+    Route::get('users/{user}/pieces-consulaires/{type}',  [PieceConsulaireController::class, 'getByUserAndType']);
+    Route::apiResource('pieces-consulaires', 'PieceConsulaireController');
+
+
+    // Type piece consulaire
+    Route::get('types-pieces-consulaires/all', [TypePieceConsulaireController::class, 'getAll']);
+
+    // Type contact
+    Route::get('contacts/types/all', [TypeContactController::class, 'getAll']);
+
+
+    // Type de contrat
+    Route::get('type-contrats/all', [TypeContratController::class, 'getAll']);
+
     // Contact usr
+    Route::get('users/{user}/contacts', [ContactUserController::class, 'getByUser']);
+    Route::get('users/{user}/contacts/urgents', [ContactUserController::class, 'getContactUrgentByUser']);
     Route::apiResource('contacts/users', 'ContactUserController');
 
     // Conjoint
+    Route::get('users/{user}/conjoints', [ConjointController::class, 'getByUser']);
+    Route::get('conjoints/describe', [ConjointController::class, 'describe']);
     Route::apiResource('conjoints', 'ConjointController');
 
 
     // Diplome
+    Route::get('users/{user}/diplomes', [DiplomeController::class, 'getByUser']);
     Route::apiResource('diplomes', 'DiplomeController');
 
 
+    // Niveau
+    Route::get('niveaux/all', [NiveauController::class, 'getAll']);
+    Route::apiResource('niveaux', 'NiveauController');
+
+
     // Emploie
+    Route::get('users/{user}/emploies', [EmploieController::class, 'getByUser']);
     Route::apiResource('emploies', 'EmploieController');
 
 
+    // Type relation interpersonnelle
+    Route::get('relations/types/all', [TypeRelationController::class, 'getAll']);
+
     // Relation interpersonnelle
+    Route::get('users/{user}/relations/personnes', [RelationInterpersonnelleController::class, 'getByUser']);
+
+
     Route::apiResource('relations/personnes', 'RelationInterpersonnelleController');
 
 
@@ -132,10 +188,15 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('departements', 'DepartementController');
 
 
+    // Domaine Instititution
+    Route::get('ministeres/{ministere}/domaines/institutions', [DomaineInstitutionController::class, 'getByMinistere']);
+    Route::get('ambassades/{ambassade}/domaines/institutions', [DomaineInstitutionController::class, 'getByAmbassade']);
+    Route::apiResource('domaines/institutions', 'DomaineInstitutionController');
+
+
+
     // Domaine
-    Route::get('ministeres/{ministere}/domaines', [DomaineController::class, 'getByMinistere']);
-    Route::get('ambassades/{ambassade}/domaines', [DomaineController::class, 'getByAmbassade']);
-    Route::apiResource('domaines', 'DomaineController');
+    Route::get('domaines/all', [DomaineController::class, 'getAll']);
 
     // Liaison
     Route::get('ministeres/{ministere}/liaisons', [LiaisonController::class, 'getByMinistere']);
@@ -229,7 +290,9 @@ Route::middleware('auth:api')->group(function () {
 
 
     // Users
+    Route::get('users/{user}/relations/not', [UserController::class, 'getByNonRelation']);
+    Route::get('users/{user}/contacts/not', [UserController::class, 'getByNonContact']);
+    Route::get('users/{user}/familles/not', [UserController::class, 'getNonMembresFamilles']);
     Route::get('ministres/{ministre}/users/membres-cabinet/not', [UserController::class, 'getNonMembresCabinetMinistre']);
     Route::get('services/{service}/users/employes/not', [UserController::class, 'getNonEmployesDansService']);
-    Route::get('users/all', [UserController::class, 'getAll']);
 });

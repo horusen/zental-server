@@ -13,4 +13,16 @@ class DomaineInstitution extends Model
     protected $fillable = [
         'libelle', 'description', 'inscription'
     ];
+
+
+    public function ministeres()
+    {
+        return $this->belongsToMany(Ministere::class, AffectationDomaineMinistere::class, 'domaine', 'ministere');
+    }
+
+
+    public function ambassades()
+    {
+        return $this->belongsToMany(Ambassade::class, AffectationDomaineAmbassade::class, 'domaine', 'ambassade');
+    }
 }

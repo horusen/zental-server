@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TypeRelationFamiliale extends Model
+class TypeRelation extends Model
 {
     use SoftDeletes;
-    protected $table = 'zen_type_relation_familiale';
+    protected $table = 'zen_type_relation';
     protected $primaryKey = 'id';
     protected $fillable = [
         'libelle', 'description', 'inscription'

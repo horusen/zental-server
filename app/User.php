@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Http\Controllers\RelationInterpersonnelleController;
+use App\Models\Adresse;
 use App\Models\ContactUser;
 use App\Models\Employe;
 use App\Models\MembreCabinetMinistre;
@@ -16,6 +17,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -29,12 +31,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public $timestamps = true;
     // protected $with = ['photo', 'photo_min'];
-    protected $with = ['photo', 'lieu_naissance.pays', 'situation_matrimoniale'];
+    protected $with = ['photo', 'lieu_naissance.pays', 'situation_matrimoniale', 'addresse.ville.pays'];
 
-    protected $guarded = ['id_inscription'];
+    protected $fillable = ['id_cam', 'identifiant', 'nom', 'prenom', 'date_naissance', 'lieu_naissance', 'email', 'password', 'sexe', 'email_recuperation', 'tel_recuperation', 'active', 'telephone', 'slug', 'photo', 'photo_min', 'situation_matrimoniale', 'profession', 'addresse'];
+
     protected $appends = ['nom_complet'];
 
 
+    public function addresse()
+    {
+        return $this->belongsTo(Adresse::class, 'addresse');
+    }
 
     public function photo()
     {
@@ -73,6 +80,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getNomCompletAttribute()
     {
         return $this->prenom . ' ' . $this->nom;
+    }
+
+
+    public function setPasswordAttibute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ConfirmationInscriptionMail;
+use App\Models\Adresse;
 use App\Models\Nationalite;
 use App\Traits\FileHandlerTrait;
 use App\User;
@@ -61,12 +62,31 @@ class AuthController extends Controller
 
 
         $user = User::create([
-            'prenom' => $request->prenom,
-            'date_naissance' => $request->date_naissance,
-            'nom' => $request->nom,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'prenom' => $request->prenom,
+            'nom' => $request->nom,
+            'date_naissance' => $request->date_naissance,
+            'lieu_naissance' => $request->lieu_naissance,
+            'sexe' => $request->sexe,
+            'telephone' => $request->telephone,
+            'profession' => $request->profession,
         ])->sendEmailVerificationNotification();
+
+
+        if ($request->has('addresse')) {
+            $this->validate($request->addresse, [
+                'addresse' => 'required',
+                'villle' => 'required|integer|exists:ville,id'
+            ]);
+
+            $adresse = Adresse::create([
+                'adresse' => $request['addresse']['addresse'],
+                'ville' => $request['addresse']['ville'],
+                'inscription' => Auth::id()
+            ]);
+
+            $user->update(['addresse' => $adresse->id]);
+        }
 
         if ($request->has('photo')) {
             $photo = $this->storeFile($request->photo, 'inscription/' . $request->email . '/photo');
@@ -95,12 +115,36 @@ class AuthController extends Controller
         $this->validate($request, [
             'prenom' => 'required',
             'nom' => 'required',
-            'email' => 'required|string|email|unique:cpt_inscription,email|max:255',
+            'email' => 'sometimes|string|email|unique:cpt_inscription,email|max:255',
+            'addresse' => 'sometimes',
+            'ville' => 'required_with:addresse|nullable|integer|exists:ville,id_ville'
+
         ]);
 
-        $user = User::create(['email' => $request->email, 'prenom' => $request->prenom, 'nom' => $request->nom, 'telephone' => $request->telephone]);
+        $user = User::create([
+            'email' => $request->email,
+            'prenom' => $request->prenom,
+            'nom' => $request->nom,
+            'telephone' => $request->telephone,
+            'profession' => $request->profession,
+            'date_naissance' => $request->date_naissance,
+            'lieu_naissance' => $request->lieu_naissance,
+            'sexe' => $request->sexe,
+        ]);
 
-        Mail::to($user->email)->send(new ConfirmationInscriptionMail(Auth::user(), $user));
+        if ($request->has('addresse')) {
+            $adresse = Adresse::create([
+                'adresse' => $request['addresse'],
+                'ville' => $request['ville'],
+                'inscription' => Auth::id()
+            ]);
+
+            $user->update(['addresse' => $adresse->id]);
+        }
+
+        if (isset($user->email)) {
+            Mail::to($user->email)->send(new ConfirmationInscriptionMail(Auth::user(), $user));
+        }
 
         return $user;
     }

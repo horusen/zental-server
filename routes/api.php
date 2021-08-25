@@ -145,6 +145,7 @@ Route::middleware('auth:api')->group(function () {
     // Ministere
     Route::get('ministeres/current-user', [MinistereController::class, 'getByCurrentUser']);
     Route::get('ministeres/describe', [MinistereController::class, 'describe']);
+    Route::get('ministeres/all', [MinistereController::class, 'getAll']);
     Route::patch('ministeres/{ministere}', [MinistereController::class, 'patch']);
     Route::apiResource('ministeres', 'MinistereController');
 

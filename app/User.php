@@ -93,10 +93,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function setPasswordAttibute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+    // public function setPasswordAttibute($value)
+    // {
+    //     $this->attributes['password'] = Hash::make($value);
+    // }
 
     public function nationalites()
     {

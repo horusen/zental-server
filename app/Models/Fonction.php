@@ -26,4 +26,16 @@ class Fonction extends Model
     {
         return $this->belongsToMany(Ambassade::class, AffectationFonctionAmbassade::class, 'fonction', 'ambassade');
     }
+
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationFonctionConsulat::class, 'fonction', 'consulat');
+    }
+
+
+    public function bureaux()
+    {
+        return $this->belongsToMany(Bureau::class, AffectationFonctionBureau::class, 'fonction', 'bureau');
+    }
 }

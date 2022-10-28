@@ -11,13 +11,24 @@ class Bureau extends Model
     protected $table = 'zen_bureau';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'libelle', 'description', 'inscription', 'pays'
+        'entite_diplomatique', 'inscription',
     ];
 
+    protected $with = ['entite_diplomatique.pays_siege', 'entite_diplomatique.pays_origine'];
 
-    // protected $appends = ['liaison'];
+
+    protected $appends = ['liaison', 'passerelle'];
 
 
+    public function entite_diplomatique()
+    {
+        return $this->belongsTo(EntiteDiplomatique::class, 'entite_diplomatique');
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, AffectationServiceBureau::class, 'bureau', 'service');
+    }
 
 
     public function passerelles()
@@ -34,13 +45,13 @@ class Bureau extends Model
 
     public function getLiaisonAttribute()
     {
-        return $this->liaisons()->with('entite_diplomatique')->get()->first();
+        return $this->liaisons()->get()->first();
     }
 
 
     public function getPasserelleAttribute()
     {
-        return $this->passerelles()->with('entite_diplomatique')->get()->first();
+        return $this->passerelles()->get()->first();
     }
 
     public function pays()
@@ -48,6 +59,22 @@ class Bureau extends Model
         return $this->belongsTo(Domaine::class, 'pays');
     }
 
+    public function getAmbassadeAttribute()
+    {
+        return $this->ambassades()->get()->first();
+    }
+
+
+    public function getConsulatAttribute()
+    {
+        return $this->consulats()->get()->first();
+    }
+
+
+    public function getMinistereAttribute()
+    {
+        return $this->ministeres()->get()->first();
+    }
 
     public function ministeres()
     {
@@ -58,5 +85,11 @@ class Bureau extends Model
     public function ambassades()
     {
         return $this->belongsToMany(Ambassade::class, AffectationBureauAmbassade::class, 'bureau', 'ambassade');
+    }
+
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationBureauConsulat::class, 'bureau', 'consulat');
     }
 }

@@ -13,7 +13,7 @@ class Ministere extends Model
     protected $fillable = [
         'entite_diplomatique', 'inscription'
     ];
-    protected $with = ['entite_diplomatique.pays_siege'];
+    protected $with = ['entite_diplomatique.pays_siege', 'entite_diplomatique.pays_origine'];
 
 
     public function entite_diplomatique()
@@ -22,10 +22,30 @@ class Ministere extends Model
     }
 
 
+    // public function services()
+    // {
+    //     return $this->belongsToMany(Service::class, AffectationServiceMinistere::class, 'ministere', 'service');
+    // }
+
+    public function ambassades()
+    {
+        return $this->belongsToMany(Ambassade::class, AffectationAmbassadeMinistere::class, 'ministere', 'ambassade');
+    }
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationConsulatMinistere::class, 'ministere', 'consulat');
+    }
+
+    public function bureaux()
+    {
+        return $this->belongsToMany(Bureau::class, AffectationBureauMinistere::class, 'ministere', 'bureau');
+    }
+
 
     public function adresses()
     {
-        return $this->belongsToMany(Adresse::class, AffectationAdresseMinistere::class, 'ministere', 'adresse');
+        return $this->belongsToMany(Addresse::class, AffectationAdresseMinistere::class, 'ministere', 'addresse');
     }
 
 

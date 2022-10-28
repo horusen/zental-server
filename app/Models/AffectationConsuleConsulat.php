@@ -11,7 +11,7 @@ class AffectationConsuleConsulat extends Model
     protected $table = 'zen_affectation_consule_consulat';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'consulat', 'consulat', 'inscription', 'en_fonction'
+        'consule', 'consulat', 'inscription', 'en_fonction'
     ];
 
 

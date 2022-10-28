@@ -16,13 +16,10 @@ class PasserelleController extends BaseController
     use PasserelleTrait;
     protected $model = Passerelle::class;
     protected $validation = [
-        'libelle' => 'required',
         'type' => 'required|integer|exists:zen_type_passerelle,id',
         'passe_frontiere' => 'required|integer|exists:zen_passe_frontiere,id',
         'pays_origine' => 'required|integer|exists:pays,id',
         'pays_siege' => 'required|integer|exists:pays,id',
-        'description' => '',
-        'bureau' => 'integer|exists:zen_bureau,id'
     ];
 
     public function __construct()
@@ -30,19 +27,17 @@ class PasserelleController extends BaseController
         parent::__construct($this->model, $this->validation);
     }
 
+
+    public function getAllData(Request $request)
+    {
+        return $this->refineData($this->modelQuery, $request)->latest()->get();
+    }
+
     public function store(Request $request)
     {
-        $validated = $this->validate($request, $this->validation);
-        $entiteDiplomatique = EntiteDiplomatique::add($validated);
-        $passerelle = $this->model::create([
-            'entite_diplomatique' => $entiteDiplomatique->id,
-            'passe_frontiere' => $request->passe_frontiere,
-            'type' => $request->type,
-            'inscription' => Auth::id()
-        ]);
+        $this->validate($request, $this->validation);
 
-
-
+        $passerelle = $this->model::create($request->all() + ['inscription' => Auth::id()]);
 
         return $this->model::find($passerelle->id);
     }
@@ -50,40 +45,44 @@ class PasserelleController extends BaseController
 
     public function affecter(Request $request)
     {
-        $validated = $this->validate($request, [
+        $this->validate($request, [
             'bureau' => 'required|integer|exists:zen_bureau,id',
             'passerelle' => 'required|integer|exists:zen_passerelle,id'
         ]);
 
+        $bureau = Bureau::find($request->bureau);
+        $passerelle = $this->model::find($request->passerelle);
 
         AffectationBureauPasserelle::create([
-            'passerelle' => $validated['passerelle'],
-            'bureau' => $validated['bureau'],
+            'passerelle' => $passerelle->id,
+            'bureau' => $bureau->id,
             'inscription' => Auth::id()
         ]);
 
-        return Bureau::find($validated['bureau']);
+
+        EntiteDiplomatique::edit($bureau->entite_diplomatique, ['pays_siege' => $passerelle->pays_siege]);
+
+        return $bureau->refresh();
     }
 
-    public function update(Request $request, $id)
-    {
-        $validated = $this->validate($request, $this->validation);
-        $passerelle = $this->model::findOrFail($id);
-        EntiteDiplomatique::edit($passerelle->entite_diplomatique, $validated);
-        $passerelle->update($validated);
-    }
 
 
     public function getByPays(Request $request, $pays)
     {
-        $passerelles =  $this->filterByPays($this->modelQuery, [$pays]);
-        return $this->refineData($passerelles, $request)->with('type', 'passe_frontiere')->latest()->get()->each->append('bureau');
+        $passerelles =  $this->filterByOrigine($this->modelQuery, [$pays]);
+        return $this->refineData($passerelles, $request)->with('type', 'passe_frontiere', 'pays_siege')->latest()->get()->each->append('bureau');
     }
 
 
+    public function getNonAffecteByPays(Request $request, $pays)
+    {
+        $passerelles =  $this->filterByOrigine($this->modelQuery, [$pays]);
+        $passerelles = $this->filterByNonAffectation($passerelles);
+        return $this->refineData($passerelles, $request)->with('type', 'passe_frontiere', 'pays_siege')->latest()->get()->each->append('bureau');
+    }
 
     public function show($id)
     {
-        return $this->model::find($id)->append('bureau');
+        return $this->model::findOrFail($id)->append('bureau');
     }
 }

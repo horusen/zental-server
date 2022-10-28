@@ -32,4 +32,16 @@ class Departement extends Model
     {
         return $this->belongsToMany(Ambassade::class, AffectationDepartementAmbassade::class, 'departement', 'ambassade');
     }
+
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationDepartementConsulat::class, 'departement', 'consulat');
+    }
+
+
+    public function bureaux()
+    {
+        return $this->belongsToMany(Bureau::class, AffectationDepartementBureau::class, 'departement', 'bureau');
+    }
 }

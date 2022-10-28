@@ -15,6 +15,7 @@ class DomaineInstitution extends Model
     ];
 
 
+
     public function ministeres()
     {
         return $this->belongsToMany(Ministere::class, AffectationDomaineMinistere::class, 'domaine', 'ministere');
@@ -24,5 +25,16 @@ class DomaineInstitution extends Model
     public function ambassades()
     {
         return $this->belongsToMany(Ambassade::class, AffectationDomaineAmbassade::class, 'domaine', 'ambassade');
+    }
+
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationDomaineConsulat::class, 'domaine', 'consulat');
+    }
+
+    public function bureaux()
+    {
+        return $this->belongsToMany(Bureau::class, AffectationDomaineBureau::class, 'domaine', 'bureau');
     }
 }

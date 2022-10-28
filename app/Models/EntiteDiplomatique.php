@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EntiteDiplomatique extends Model
 {
+    use \Awobaz\Compoships\Compoships;
     protected $table = 'zen_entite_diplomatique';
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -24,6 +25,11 @@ class EntiteDiplomatique extends Model
         return $this->belongsTo(Pays::class, 'pays_siege');
     }
 
+    public function addresses()
+    {
+        return $this->belongsToMany(Addresse::class, AffectationAdresseEntiteDiplomatique::class, 'entite_diplomatique', 'addresse');
+    }
+
     public static function add(array $data)
     {
         return self::create(array_merge($data, ['inscription' => Auth::id()]));
@@ -35,6 +41,12 @@ class EntiteDiplomatique extends Model
         return $entite->update($data);
     }
 
+
+    public function bureau()
+    {
+        return $this->hasOne(Bureau::class, 'entite_diplomatique');
+    }
+
     public function ministere()
     {
         return $this->hasOne(Ministere::class, 'entite_diplomatique');
@@ -43,12 +55,12 @@ class EntiteDiplomatique extends Model
 
     public function ambassade()
     {
-        return $this->hasOne(Ministere::class, 'entite_diplomatique');
+        return $this->hasOne(Ambassade::class, 'entite_diplomatique');
     }
 
 
     public function consulat()
     {
-        return $this->hasOne(Ministere::class, 'entite_diplomatique');
+        return $this->hasOne(Consulat::class, 'entite_diplomatique');
     }
 }

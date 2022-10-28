@@ -12,7 +12,7 @@ class Employe extends Model
     protected $table = 'zen_employe';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'employe', 'fonction', 'inscription', 'poste', 'debut', 'fin', 'note'
+        'employe', 'fonction', 'inscription', 'poste', 'debut', 'fin', 'note', 'charger_com'
     ];
 
 

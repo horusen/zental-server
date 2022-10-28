@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Shared;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Formation;
+use App\Shared\Controllers\BaseController;
 
 class AltBaseController extends BaseController
 {

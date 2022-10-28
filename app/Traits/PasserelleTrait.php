@@ -4,13 +4,27 @@ namespace App\Traits;
 
 trait PasserelleTrait
 {
-    use EntiteDiplomatiqueTrait;
+    use BaseTrait;
 
-
-    public function filterByPays($passerelle, $pays)
+    // filter by siege
+    public function filterByPaysSiege($passerelles, $pays)
     {
-        return $passerelle->whereHas('entite_diplomatique.pays_origine', function ($q) use ($pays) {
+        return $passerelles->whereHas('pays_siege', function ($q) use ($pays) {
             $q->where('pays.id', $pays);
         });
+    }
+
+    // filter by origin
+    public function filterByOrigine($passerelles, $pays)
+    {
+        return $passerelles->whereHas('pays_origine', function ($q) use ($pays) {
+            $q->where('pays.id', $pays);
+        });
+    }
+
+    // fitler by no affectation - - - - - - filter by non affectattion
+    public function filterByNonAffectation($passerelles)
+    {
+        return $passerelles->doesntHave('bureaux');
     }
 }

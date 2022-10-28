@@ -35,6 +35,7 @@ class PieceConsulaireController extends BaseController
         $piece_consulaire = $this->model::create([
             'type' => $request->type,
             'user' => $request->user,
+            'note' => $request->note,
             'debut' => $request->debut,
             'fin' => $request->fin,
             'fichier_joint' => $fichier_joint->id,

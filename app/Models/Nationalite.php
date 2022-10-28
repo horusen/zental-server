@@ -13,4 +13,10 @@ class Nationalite extends Model
     protected $fillable = [
         'user', 'pays', 'inscription'
     ];
+
+
+    public function pays()
+    {
+        return $this->belongsTo(Pays::class, 'pays');
+    }
 }

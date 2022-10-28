@@ -7,6 +7,7 @@ trait EmployeTrait
 {
     use BaseTrait;
 
+    // Filter by bureau
     protected function filterByBureaux($employes, $bureaux)
     {
         return $employes->whereHas('bureaux', function ($q) use ($bureaux) {
@@ -14,6 +15,7 @@ trait EmployeTrait
         });
     }
 
+    // reasearch
     protected function search($employes, $keyword)
     {
         return $employes->whereHas('employe', function ($q) use ($keyword) {
@@ -21,6 +23,8 @@ trait EmployeTrait
         });
     }
 
+
+    // Filter by ministere
     public function filterByMinisteres($employes, $ministeres)
     {
         return $employes->whereHas('services.ministeres', function ($q) use ($ministeres) {
@@ -29,19 +33,20 @@ trait EmployeTrait
     }
 
 
-
+    // Filter by poste
     public function filterByPostes($employes, $postes)
     {
         return $employes->whereIn('poste', $postes);
     }
 
 
+    // Filter by fonctions
     public function filterByFonctions($employes, $fonctions)
     {
         return $employes->whereIn('fonction', $fonctions);
     }
 
-
+    // Filter by domaines
     public function filterByDomaines($employes, $domaines)
     {
         return $employes->whereHas('services.departement.domaine', function ($q) use ($domaines) {
@@ -49,7 +54,7 @@ trait EmployeTrait
         });
     }
 
-
+    // Filter by service
     public function filterByServices($employes, $services)
     {
         return $employes->whereHas('services', function ($q) use ($services) {
@@ -58,6 +63,7 @@ trait EmployeTrait
     }
 
 
+    // Filter by departement
     public function filterByDepartements($employes, $departements)
     {
         return $employes->whereHas('services.departement', function ($q) use ($departements) {
@@ -66,6 +72,7 @@ trait EmployeTrait
     }
 
 
+    // Filter by ambassades
     public function filterByAmbassades($employes, $ambassades)
     {
         return $employes->whereHas('services.ambassades', function ($q) use ($ambassades) {
@@ -74,7 +81,7 @@ trait EmployeTrait
     }
 
 
-
+    // Filter by consulat
     public function filterByConsulats($employes, $consulats)
     {
         return $employes->whereHas('services.consulats', function ($q) use ($consulats) {

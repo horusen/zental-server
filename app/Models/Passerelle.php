@@ -10,20 +10,26 @@ class Passerelle extends Model
     use SoftDeletes;
     protected $table = 'zen_passerelle';
     protected $primaryKey = 'id';
-    protected $fillable = ['entite_diplomatique', 'inscription', 'passe_frontiere', 'type'];
-    protected $with = ['entite_diplomatique.pays_siege', 'type', 'passe_frontiere'];
+    protected $fillable = ['pays_origine', 'pays_siege', 'inscription', 'passe_frontiere', 'type'];
+    protected $with = ['pays_origine', 'pays_siege', 'type', 'passe_frontiere'];
     protected $append = ['bureau'];
 
 
-    public function entite_diplomatique()
-    {
-        return $this->belongsTo(EntiteDiplomatique::class, 'entite_diplomatique');
-    }
 
 
     public function type()
     {
         return $this->belongsTo(TypePasserelle::class, 'type');
+    }
+
+    public function pays_origine()
+    {
+        return $this->belongsTo(Pays::class, 'pays_origine');
+    }
+
+    public function pays_siege()
+    {
+        return $this->belongsTo(Pays::class, 'pays_siege');
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AffectationBureauAmbassade;
+use App\Models\AffectationBureauConsulat;
 use App\Models\AffectationBureauLiaison;
 use App\Models\AffectationBureauMinistere;
 use App\Models\AffectationBureauPasserelle;
@@ -21,15 +22,28 @@ class BureauController extends BaseController
     protected $model = Bureau::class;
     protected $validation = [
         'libelle' => 'required',
-        'pays' => 'required|integer|exists:pays,id',
-        'description' => '',
-        'ministere' => 'required_without:ambassade|integer|exists:zen_ministere,id',
-        'ambassade' => 'required_without:ministere|integer|exists:zen_ambassade,id'
+        'pays_origine' => 'required|integer|exists:pays,id',
+        // 'ministere' => 'required_without_all:ambassade,consulat|integer|exists:zen_ministere,id',
+        // 'ambassade' => 'required_without_all:ministere,consulat|integer|exists:zen_ambassade,id',
+        // 'consulat' => 'required_without_all:ministere,ambassade|integer|exists:zen_consulat,id'
     ];
 
     public function __construct()
     {
         parent::__construct($this->model, $this->validation);
+    }
+
+
+    public function getAllData(Request $request)
+    {
+        return $this->refineData($this->modelQuery, $request)->latest()->get();
+    }
+
+
+    public function getByUser(Request $request, $user)
+    {
+        $bureaux = $this->filterByUsers($this->modelQuery, [$user]);
+        return $this->refineData($bureaux, $request)->latest()->get();
     }
 
     public function getByMinistere(Request $request, $ministere)
@@ -45,21 +59,52 @@ class BureauController extends BaseController
         return $this->refineData($bureaux, $request)->latest()->get();
     }
 
+
+    public function getByConsulat(Request $request, $consulat)
+    {
+        $bureaux = $this->filterByConsulats($this->modelQuery, [$consulat]);
+        return $this->refineData($bureaux, $request)->latest()->get();
+    }
+
+    public function getNonAffecteByMinistere(Request $request, $ministere)
+    {
+        $bureaux = $this->filterByMinisteres($this->modelQuery, [$ministere]);
+        $bureaux = $this->filterByNonAffectation($bureaux);
+        return $this->refineData($bureaux, $request)->latest()->get();
+    }
+
+
+    public function geNonAffectetByAmbassade(Request $request, $ambassade)
+    {
+        $bureaux = $this->filterByAmbassades($this->modelQuery, [$ambassade]);
+        $bureaux = $this->filterByNonAffectation($bureaux);
+        return $this->refineData($bureaux, $request)->latest()->get();
+    }
+
+
+    public function getNonAffecteByConsulat(Request $request, $consulat)
+    {
+        $bureaux = $this->filterByConsulats($this->modelQuery, [$consulat]);
+        $bureaux = $this->filterByNonAffectation($bureaux);
+        return $this->refineData($bureaux, $request)->latest()->get();
+    }
+
     public function store(Request $request)
     {
-        $validated = $this->validate($request, $this->validation);
-        $bureau = $this->model::create(array_merge($validated, ['inscription' => Auth::id()]));
+        $this->validate($request, $this->validation);
+        $entiteDiplomatique = EntiteDiplomatique::create($request->all() + ['inscription' => Auth::id()]);
+        $bureau = $this->model::create(['entite_diplomatique' => $entiteDiplomatique->id, 'inscription' => Auth::id()]);
 
         if ($request->has('ministere')) {
-
             AffectationBureauMinistere::create(['ministere' => $request->ministere, 'bureau' => $bureau->id, 'inscription' => Auth::id()]);
         } else  if ($request->has('ambassade')) {
-
             AffectationBureauAmbassade::create(['ambassade' => $request->ambassade, 'bureau' => $bureau->id, 'inscription' => Auth::id()]);
+        } else if ($request->has('consulat')) {
+            AffectationBureauConsulat::create(['consulat' => $request->consulat, 'bureau' => $bureau->id, 'inscription' => Auth::id()]);
         }
 
 
-        return $bureau;
+        return $this->model::find($bureau->id);
     }
 
 
@@ -67,21 +112,20 @@ class BureauController extends BaseController
     {
         $this->isvalid($request);
         $element = $this->model::find($id);
-        $element->update(array_merge($request->all(), ['inscription' => Auth::id()]));
+        EntiteDiplomatique::edit($element->entite_diplomatique, $request->all());
         return $this->show($element->id);
     }
 
 
     public function show($id)
     {
-        $bureau = $this->model::findOrFail($id);
+        $bureau = $this->model::findOrFail($id)->append([
+            'ministere', 'ambassade', 'consulat',
+            'liaison', 'passerelle'
+        ]);
 
 
-        if (isset($bureau->liaison)) {
-            return $bureau->append('liaison');
-        } else if (isset($bureau->passerelle)) {
-            return $bureau->append('passerelle');
-        }
+
 
         return $bureau;
     }
@@ -89,7 +133,7 @@ class BureauController extends BaseController
 
     public function affecter(Request $request)
     {
-        $validated =  $this->validate($request, [
+        $this->validate($request, [
             'bureau' => 'required|integer|exists:zen_bureau,id',
             'passerelle' => 'required_without:liaison|integer|exists:zen_passerelle,id',
             'liaison' => 'required_without:passerelle|integer|exists:zen_liaison,id',
@@ -97,29 +141,37 @@ class BureauController extends BaseController
 
 
 
-        $this->deletePreviousAffectation($validated['bureau']);
+        $this->deletePreviousAffectation($request->bureau);
 
         if ($request->has('liaison')) {
+            $liaison = Liaison::findOrFail($request->liaison);
             AffectationBureauLiaison::create([
-                'bureau' => $validated['bureau'],
-                'liaison' => $validated['liaison'],
+                'bureau' => $request->bureau,
+                'liaison' => $liaison->id,
                 'inscription' => Auth::id()
             ]);
 
+            $bureau = $this->model::findOrFail($request->bureau);
+            EntiteDiplomatique::edit($bureau->entite_diplomatique, ['pays_siege' => $liaison->pays_siege]);
 
-            return Liaison::findOrFail($validated['liaison']);
+
+            return $liaison;
         }
 
 
         if ($request->has('passerelle')) {
-            AffectationBureauPasserelle::create([
-                'bureau' => $validated['bureau'],
-                'passerelle' => $validated['passerelle'],
+            $passerelle = Passerelle::findOrFail($request->passerelle);
+            AffectationBureaupasserelle::create([
+                'bureau' => $request->bureau,
+                'passerelle' => $passerelle->id,
                 'inscription' => Auth::id()
             ]);
 
+            $bureau = $this->model::findOrFail($request->bureau);
+            EntiteDiplomatique::edit($bureau->entite_diplomatique, ['pays_siege' => $passerelle->pays_siege]);
 
-            return Passerelle::findOrFail($validated['passerelle']);
+
+            return $passerelle;
         }
     }
 

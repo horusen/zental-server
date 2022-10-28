@@ -13,4 +13,10 @@ trait ConsulatTrait
             $q->where('zen_ambassade.id', $ambassades);
         });
     }
+
+
+    public function filterByUser($consulats, $user)
+    {
+        return $consulats->where('inscription', $user);
+    }
 }

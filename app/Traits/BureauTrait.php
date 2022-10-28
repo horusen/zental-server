@@ -22,4 +22,24 @@ trait BureauTrait
             $q->where('zen_ambassade.id', $ambassades);
         });
     }
+
+
+    public function filterByConsulats($bureaux, $consulats)
+    {
+        return $bureaux->whereHas('consulats', function ($q) use ($consulats) {
+            $q->where('zen_consulat.id', $consulats);
+        });
+    }
+
+
+
+    public function filterByUsers($bureaux, $users)
+    {
+        return $bureaux->whereIn('inscription', $users);
+    }
+
+    public function filterByNonAffectation($bureaux)
+    {
+        return $bureaux->doesntHave('liaisons')->doesntHave('passerelles');
+    }
 }

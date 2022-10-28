@@ -21,6 +21,7 @@ class ResponsableController extends BaseController
         'poste' => 'required|integer|in:1,2,3',
         'debut' => 'required|date',
         'note' => '',
+        'fin' => 'required_if:en_fonction,false',
         'ministere' => 'required_without_all:consulat,ambassade|integer|exists:zen_ministere,id',
         'consulat' => 'required_without_all:ministere,ambassade|integer|exists:zen_consulat,id',
         'ambassade' => 'required_without_all:ministere,consulat|integer|exists:zen_ambassade,id',

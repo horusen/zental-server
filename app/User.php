@@ -3,10 +3,14 @@
 namespace App;
 
 use App\Http\Controllers\RelationInterpersonnelleController;
-use App\Models\Adresse;
+use App\Models\Addresse;
 use App\Models\ContactUser;
 use App\Models\Employe;
+use App\Models\InscriptionConsulaire;
+use App\Models\Liaison;
 use App\Models\MembreCabinetMinistre;
+use App\Models\MembreGroupe;
+use App\Models\Nationalite;
 use App\Models\RelationFamiliale;
 use App\Models\RelationInterpersonnelle;
 use App\Models\Service;
@@ -15,6 +19,7 @@ use App\Models\Ville;
 use App\Shared\Models\Fichier\Fichier;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -40,7 +45,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function addresse()
     {
-        return $this->belongsTo(Adresse::class, 'addresse');
+        return $this->belongsTo(Addresse::class, 'addresse')->whereNull('deleted_at');
+    }
+
+    public function membership_groupe()
+    {
+        return $this->hasMany(MembreGroupe::class, 'membre');
     }
 
     public function photo()
@@ -87,6 +97,49 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function nationalites()
+    {
+        return $this->hasMany(Nationalite::class, 'user');
+    }
+
+    private function inscriptionConsulaires()
+    {
+        return $this->hasMany(InscriptionConsulaire::class, 'user');
+    }
+
+    public function getInscriptionConsulaireAttribute()
+    {
+        $inscription_consulaire = $this->inscriptionConsulaires()->whereIn('etat', [2])->whereNull('deleted_at')->latest()->get()->first();
+        $appendable = "";
+        if (isset($inscription_consulaire)) {
+            switch ($inscription_consulaire->type_entite_diplomatique) {
+                case 1:
+                    $appendable = 'ambassade';
+                    break;
+                case 2:
+                    $appendable = 'consulat';
+                    break;
+                case 3:
+                    $appendable = 'liaison';
+                    break;
+            }
+        }
+        return isset($inscription_consulaire) ? $inscription_consulaire->append([$appendable]) : null;
+    }
+
+    // public function test() {
+    //     return Model::
+    // }
+
+
+    public function estCitoyens()
+    {
+        return $this->inscriptionConsulaires()->whereIn('etat', [2])->whereNull('deleted_at');
+    }
+
+
+
 
 
 

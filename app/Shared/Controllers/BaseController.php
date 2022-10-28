@@ -157,6 +157,27 @@ class BaseController extends Controller
 
 
 
+    public static  function static_many_to_many_update($new_array, $old_array, $affectation_model, $model_field, $foreign_field, $model_id, $inscription)
+    {
+        foreach ($old_array  as $item) {
+            if (!in_array($item, $new_array)) {
+                $element = $affectation_model::where($model_field, $model_id)->where($foreign_field, $item)->first();
+                if ($element) {
+                    $element->delete();
+                }
+            }
+        }
+
+        foreach ($new_array as $item) {
+            if (!in_array($item, $old_array)) {
+                $affectation = $affectation_model::create([
+                    $model_field => $model_id,
+                    $foreign_field => $item,
+                    'inscription' => $inscription
+                ]);
+            }
+        }
+    }
 
 
 

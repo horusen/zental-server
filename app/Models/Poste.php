@@ -21,6 +21,11 @@ class Poste extends Model
         return $this->belongsTo(Domaine::class, 'domaine');
     }
 
+    public function bureaux()
+    {
+        return $this->belongsToMany(Bureau::class, AffectationPosteBureau::class, 'poste', 'bureau');
+    }
+
 
     public function ministeres()
     {
@@ -31,5 +36,11 @@ class Poste extends Model
     public function ambassades()
     {
         return $this->belongsToMany(Ambassade::class, AffectationPosteAmbassade::class, 'poste', 'ambassade');
+    }
+
+
+    public function consulats()
+    {
+        return $this->belongsToMany(Consulat::class, AffectationPosteConsulat::class, 'poste', 'consulat');
     }
 }

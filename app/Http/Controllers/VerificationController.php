@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
@@ -19,17 +20,17 @@ class VerificationController extends Controller
             $user->markEmailAsVerified();
         }
 
-        return redirect()->to('/');
+        return response()->json(["message" => "Email vérifié avec succés"]);
     }
 
 
-    public function resend()
+    public function resend(User $user)
     {
-        if (auth()->user()->hasVerifiedEmail()) {
+        if ($user->hasVerifiedEmail()) {
             return response()->json(["msg" => "Email already verified."], 400);
         }
 
-        auth()->user()->sendEmailVerificationNotification();
+        $user->sendEmailVerificationNotification();
 
         return response()->json(["msg" => "Email verification link sent on your email id"]);
     }

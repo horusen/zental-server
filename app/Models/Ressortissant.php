@@ -11,6 +11,6 @@ class Ressortissant extends Model
     protected $table = 'zen_ressortissant';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user', 'adresse', 'inscription', 'tel', 'presence', 'debut', 'fin'
+        'user', 'addresse', 'inscription', 'tel', 'presence', 'debut', 'fin'
     ];
 }

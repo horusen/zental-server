@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Conjoint;
+use App\Models\SituationMatrimoniale;
 use App\Shared\Controllers\BaseController;
 use App\User;
 use Illuminate\Http\Request;
@@ -41,12 +42,11 @@ class ConjointController extends BaseController
         // If situation matrimoniale is "marié" create a conjoint record and return it
         if ($request->situation_matrimoniale === 2) {
             $conjoint = $this->model::create(array_merge($request->all(), ['inscription' => Auth::id()]));
-            return $this->model::find($conjoint->id);
         }
 
 
         // Otherwise return null
-        return null;
+        return SituationMatrimoniale::find($request->situation_matrimoniale);
     }
 
 
@@ -64,6 +64,6 @@ class ConjointController extends BaseController
         }
 
 
-        return null;
+        return SituationMatrimoniale::find(5);
     }
 }

@@ -127,7 +127,7 @@ trait UserTrait
 
     protected function search($users, $keyword)
     {
-        return $users->where('prenom', 'like', '%' . $keyword . '%')->orWhere('prenom', 'like', '%' . $keyword . '%');
+        return $users->where('prenom', 'like', '%' . $keyword . '%')->orWhere('nom', 'like', '%' . $keyword . '%');
     }
 
     protected function applySearch($users, $request)
